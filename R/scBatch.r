@@ -27,7 +27,7 @@ scBatch <- function(count.mat,dist.mat,weight.mat, m, max.iter=30,step.size=0.00
   core = t(count.mat)%*%t((diag(p) - matrix(1,p,p)/p))%*%(diag(p) - matrix(1,p,p)/p)%*%count.mat
   core = (core + t(core))/2
 
-  start_time <- proc.time()
+  #start_time <- proc.time()
   for (i in 1:max.iter){
     group = sample(1:m,size=pn[2],replace=TRUE,prob=rep(1/m,m))
 
@@ -48,9 +48,9 @@ scBatch <- function(count.mat,dist.mat,weight.mat, m, max.iter=30,step.size=0.00
         }else{
           step.size = 1.5*step.size
           weight.mat = update.mat
-          end_time <- proc.time()
-          time <- (end_time-start_time)[3]
-          cat(i,',',f,',',step.size,',',time,'\n')
+          #end_time <- proc.time()
+          #time <- (end_time-start_time)[3]
+          #cat(i,',',f,',',step.size,',',time,'\n')
           break
         }
       }
