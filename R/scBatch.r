@@ -17,10 +17,10 @@
 
 scBatch <- function(count.mat,dist.mat,weight.mat, m, max.iter=30,step.size=0.0001, tol=1e-10){
   pn = dim(count.mat)
-  if (!exists(weight.mat)){
+  if (!exists("weight.mat")){
     weight.mat = diag(pn[2])
   }
-  if (!exists(m)){
+  if (!exists("m")){
     m = floor(0.1*pn[2])
   }
   core = t(count.mat)%*%t((diag(p) - matrix(1,p,p)/p))%*%(diag(p) - matrix(1,p,p)/p)%*%count.mat
