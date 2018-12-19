@@ -11,6 +11,8 @@
 #' @param tol Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.
 #' @return Returns the corrected count matrix.
 #' @author Teng Fei. Email: tfei@emory.edu
+#' @useDynLib scBatch
+#' @importFrom Rcpp sourceCpp
 #' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
 #' @export
 
