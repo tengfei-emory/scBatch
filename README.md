@@ -38,3 +38,10 @@ correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/co
 correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10,step=0.0001,derif=scBatch::derif)
 
 ```
+We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
+
+#References
+
+Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics, epub ahead of printing (2018).
+Zappia, Luke, Belinda Phipson, and Alicia Oshlack. "Splatter: simulation of single-cell RNA sequencing data." Genome biology 18.1 (2017): 174.
+Eddelbuettel, Dirk, and Conrad Sanderson. "RcppArmadillo: Accelerating R with high-performance C++ linear algebra." Computational Statistics & Data Analysis 71 (2014): 1054-1063.
