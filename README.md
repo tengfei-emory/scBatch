@@ -41,7 +41,7 @@ correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10
 We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
 
 # References
-Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics, epub ahead of printing (2018).
+Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641. (2018).
 
 Zappia, Luke, Belinda Phipson, and Alicia Oshlack. "Splatter: simulation of single-cell RNA sequencing data." Genome biology 18.1 (2017): 174.
 
