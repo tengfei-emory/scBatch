@@ -15,12 +15,13 @@ using namespace arma;
 //' @param step Step size of the gradient descent algorithm.
 //' @param tol Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.
 //' @param derif Function to compute gradient of the loss function.
+//' @param verbose Whether output the loss function after each iteration.
 //' @return Returns the corrected count matrix.
 //' @author Teng Fei. Email: tfei@emory.edu
 //' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
 //' @export
 // [[Rcpp::export]]
-arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif){
+arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif, bool verbose){
   //NumericMatrix d, NumericMatrix core, NumericVector idx) {
   arma::wall_clock timer;
 
@@ -52,8 +53,10 @@ arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, d
           w = u;
           double n = timer.toc();
 
-          cout << k << " time elapsed: " << n << " L: " << fnew << " step size: " << step << endl;
-          //cout << fnew << endl;
+          if (verbose){
+            cout << k << " time elapsed: " << n << " L: " << fnew << " step size: " << step << endl;
+            //cout << fnew << endl;
+          }
           break;
         }
       }

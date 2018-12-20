@@ -17,11 +17,12 @@ derif <- function(c, w, d, core, idx) {
 #' @param step Step size of the gradient descent algorithm.
 #' @param tol Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.
 #' @param derif Function to compute gradient of the loss function.
+#' @param verbose Whether output the loss function after each iteration.
 #' @return Returns the corrected count matrix.
 #' @author Teng Fei. Email: tfei@emory.edu
 #' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
 #' @export
-scBatchCpp <- function(c, w, d, m, max, step, tol, derif) {
-    .Call('_scBatch_scBatchCpp', PACKAGE = 'scBatch', c, w, d, m, max, step, tol, derif)
+scBatchCpp <- function(c, w, d, m, max, step, tol, derif, verbose) {
+    .Call('_scBatch_scBatchCpp', PACKAGE = 'scBatch', c, w, d, m, max, step, tol, derif, verbose)
 }
 

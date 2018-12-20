@@ -22,8 +22,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // scBatchCpp
-arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif);
-RcppExport SEXP _scBatch_scBatchCpp(SEXP cSEXP, SEXP wSEXP, SEXP dSEXP, SEXP mSEXP, SEXP maxSEXP, SEXP stepSEXP, SEXP tolSEXP, SEXP derifSEXP) {
+arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif, bool verbose);
+RcppExport SEXP _scBatch_scBatchCpp(SEXP cSEXP, SEXP wSEXP, SEXP dSEXP, SEXP mSEXP, SEXP maxSEXP, SEXP stepSEXP, SEXP tolSEXP, SEXP derifSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -35,14 +35,15 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type step(stepSEXP);
     Rcpp::traits::input_parameter< double >::type tol(tolSEXP);
     Rcpp::traits::input_parameter< Rcpp::Function >::type derif(derifSEXP);
-    rcpp_result_gen = Rcpp::wrap(scBatchCpp(c, w, d, m, max, step, tol, derif));
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(scBatchCpp(c, w, d, m, max, step, tol, derif, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_scBatch_derif", (DL_FUNC) &_scBatch_derif, 5},
-    {"_scBatch_scBatchCpp", (DL_FUNC) &_scBatch_scBatchCpp, 8},
+    {"_scBatch_scBatchCpp", (DL_FUNC) &_scBatch_scBatchCpp, 9},
     {NULL, NULL, 0}
 };
 

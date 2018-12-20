@@ -2,9 +2,9 @@
 % Please edit documentation in R/RcppExports.R
 \name{scBatchCpp}
 \alias{scBatchCpp}
-\title{Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction}
+\title{Correct RNA-seq count matrix subject to batch effects by sample distance matrix correction (faster Rcpp version)}
 \usage{
-scBatchCpp(c, w, d, m, max, step, tol, derif)
+scBatchCpp(c, w, d, m, max, step, tol, derif, verbose)
 }
 \arguments{
 \item{c}{The original p*n batch effect data with n subjects and p RNA-seq measurements.}
@@ -22,12 +22,14 @@ scBatchCpp(c, w, d, m, max, step, tol, derif)
 \item{tol}{Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.}
 
 \item{derif}{Function to compute gradient of the loss function.}
+
+\item{verbose}{Whether output the loss function after each iteration.}
 }
 \value{
 Returns the corrected count matrix.
 }
 \description{
-As an extension of package 'QuantNorm', which corrects the distance matrix to obtain reasonable sample pattern, this package use gradient descent algorithm to correct count matrix by linear transformation.
+Use gradient descent algorithm to correct count matrix by linear transformation based on known sample matrix correction.
 }
 \references{
 Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
