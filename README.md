@@ -1,7 +1,7 @@
 # scBatch
 Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction
 
-scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix.
+scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. Detailed methods and algorithms can be found in [this poster](http://www.stat.uga.edu/sites/default/files/05_Fei_Teng.pdf), which won honourable mention award in Georgia Statistics Day 2018 at University of Georgia. We are preparing the manuscript for publication.
 
 # Installation
 ```{r}
