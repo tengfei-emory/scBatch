@@ -40,14 +40,3 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-
-static const R_CallMethodDef CallEntries[] = {
-    {"_scBatch_derif", (DL_FUNC) &_scBatch_derif, 5},
-    {"_scBatch_scBatchCpp", (DL_FUNC) &_scBatch_scBatchCpp, 9},
-    {NULL, NULL, 0}
-};
-
-RcppExport void R_init_scBatch(DllInfo *dll) {
-    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
-    R_useDynamicSymbols(dll, FALSE);
-}
