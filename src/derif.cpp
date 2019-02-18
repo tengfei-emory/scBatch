@@ -13,7 +13,7 @@ using namespace arma;
 //' @param idx Random selected columns input from the main algorithm.
 //' @author Teng Fei. Email: tfei@emory.edu
 //' @export
-//' @useDynLib mypackage, .registration = TRUE
+//' @useDynLib scBatch, .registration = TRUE
 // [[Rcpp::export]]
 Rcpp::List derif(arma::mat c, arma::mat w, arma::mat d, arma::mat core, arma::uvec idx){
   int n = c.n_cols;
