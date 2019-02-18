@@ -1,7 +1,7 @@
 # scBatch
 Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction
 
-scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix.
+scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. Detailed methods and algorithms can be found in [this poster](http://www.stat.uga.edu/sites/default/files/05_Fei_Teng.pdf), which won honourable mention award in Georgia Statistics Day 2018 at University of Georgia. We are preparing the manuscript for publication.
 
 # Installation
 ```{r}
@@ -35,13 +35,13 @@ exp <- exprs(sim.groups)
 correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/column',cor_method='pearson',max=5)
 
 #Corrected count based on the corrected distance matrix.
-correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10,step=0.0001,derif=scBatch::derif)
+correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
 
 ```
 We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
 
 # References
-Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics, epub ahead of printing (2018).
+Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641. (2018).
 
 Zappia, Luke, Belinda Phipson, and Alicia Oshlack. "Splatter: simulation of single-cell RNA sequencing data." Genome biology 18.1 (2017): 174.
 
