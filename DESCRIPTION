@@ -2,7 +2,7 @@ Package: scBatch
 Title: Batch Effect Correction of Single-cell RNA Sequencing Data through Sample Distance Matrix Correction
 Version: 0.1.0
 Depends: RcppArmadillo
-Imports: stats, Rcpp, RcppArmadillo
+Imports: stats, utils, Rcpp, RcppArmadillo
 Date: 2018-10-09
 Author: Teng Fei, Tianwei Yu
 Maintainer: Teng Fei <tfei@emory.edu>

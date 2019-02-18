@@ -1,7 +1,7 @@
 qnorm1plus <-  function(ccc,batches){
   batch_num <- max(batches)
   max_dim <- 0
-  combnbatch <- combn(unique(batches),2)
+  combnbatch <- utils::combn(unique(batches),2)
   for (i in 1:batch_num){
     dim <- dim(ccc[batches == i, batches == i])[1]
     if (dim > max_dim){
