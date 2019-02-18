@@ -3,6 +3,15 @@
 #include "RcppArmadillo.h"
 // [[Rcpp::depends(RcppArmadillo)]]
 using namespace arma;
+//' Column gradient for the loss function based on Pearson correlation distance (faster Rcpp version)
+//'
+//' @description A specific implementation of column gradient to be used in the main coordinate gradient descent algorithm scBatchCpp
+//' @param c The original p*n batch effect data with n subjects and p RNA-seq measurements.
+//' @param d The n*n distance matrix obtained by QuantNorm.
+//' @param w An initial n*n weight matrix to conduct linear transformation. Default to be identity matrix if not specified.
+//' @param core Pre-calculated component from main algorithm in order to save computation time.
+//' @param idx Random selected columns input from the main algorithm.
+//' @author Teng Fei. Email: tfei@emory.edu
 //' @export
 // [[Rcpp::export]]
 Rcpp::List derif(arma::mat c, arma::mat w, arma::mat d, arma::mat core, arma::uvec idx){
