@@ -7,7 +7,6 @@ Imports: stats, utils, Rcpp, RcppArmadillo
 Date: 2019-02-18
 Author: Teng Fei, Tianwei Yu
 Maintainer: Teng Fei <tfei@emory.edu>
-Description: 
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
