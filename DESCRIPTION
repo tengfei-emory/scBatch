@@ -1,9 +1,11 @@
 Package: scBatch
-Title: Batch Effect Correction of Single-cell RNA Sequencing Data through Sample Distance Matrix Correction
+Title: Batch Effect Correction of Omics Data through Sample Distance Matrix Correction
+Description: Conducts count matrix correction based on the sample distance matrix correction of R package 'QuantNorm' (Fei et al, 2018, <doi:10.1093/bioinformatics/bty117>). Also available on 'GitHub' <https://github.com/tengfei-emory/scBatch>.
+Version: 1.0.5
 Version: 0.1.0
 Depends: RcppArmadillo
 Imports: stats, utils, Rcpp, RcppArmadillo
-Date: 2018-10-09
+Date: 2019-02-18
 Author: Teng Fei, Tianwei Yu
 Maintainer: Teng Fei <tfei@emory.edu>
 Description: 
