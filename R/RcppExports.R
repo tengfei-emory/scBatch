@@ -11,7 +11,6 @@
 #' @param idx Random selected columns input from the main algorithm.
 #' @author Teng Fei. Email: tfei@emory.edu
 #' @export
-#' @import RcppArmadillo
 derif <- function(c, w, d, core, idx) {
     .Call('_scBatch_derif', PACKAGE = 'scBatch', c, w, d, core, idx)
 }
@@ -32,7 +31,6 @@ derif <- function(c, w, d, core, idx) {
 #' @author Teng Fei. Email: tfei@emory.edu
 #' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
 #' @export
-#' @import RcppArmadillo
 scBatchCpp <- function(c, w, d, m, max, step, tol, derif, verbose) {
     .Call('_scBatch_scBatchCpp', PACKAGE = 'scBatch', c, w, d, m, max, step, tol, derif, verbose)
 }
