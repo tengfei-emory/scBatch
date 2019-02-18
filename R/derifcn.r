@@ -1,7 +1,7 @@
 derifcn <- function(count.mat,weight.mat,dist.mat,core,idx){
   pn = dim(count.mat)
   new.count.mat = count.mat%*%weight.mat
-  A = 1-cor(new.count.mat)
+  A = 1-stats::cor(new.count.mat)
   D = dist.mat
   AmD = A-D
   B = weight.mat

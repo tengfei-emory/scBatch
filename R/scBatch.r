@@ -42,7 +42,7 @@ scBatch <- function(count.mat,dist.mat,weight.mat, m, max.iter=30,step.size=0.00
         update.mat = weight.mat - step.size*df
         update.mat = update.mat/(rep(1,pn[2]) %o% apply(abs(update.mat),2,max))
         new.count.mat = count.mat%*%update.mat;
-        A = 1-cor(new.count.mat);
+        A = 1-stats::cor(new.count.mat);
         fnew = sum((as.vector(A)-as.vector(dist.mat))^2)
 
         if(fnew >= f){
