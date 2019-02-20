@@ -1,26 +1,29 @@
 # scBatch
 Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction
 
-scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. Detailed methods and algorithms can be found in [this poster](http://www.stat.uga.edu/sites/default/files/05_Fei_Teng.pdf), which won honourable mention award in Georgia Statistics Day 2018 at University of Georgia. We are preparing the manuscript for publication.
+scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts).
 
 # Installation
+The package requires R version 3.3.0 with prerequisite package [Rcpp](https://CRAN.R-project.org/package=Rcpp), stats and utils. The package can be installed using the following code. The installation will typically complete within a minute.
 ```{r}
-library(devtools)
-install_github('tengfei-emory/scBatch')
+devtools::install_github('tengfei-emory/scBatch')
 library(scBatch)
 ```
 
 # Toy example
+The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
+
 ```{r}
 library(splatter)
 library(scBatch)
 
-#sample size n and number of genes p
+#sample size n, number of genes p and the probability of being differentially expressed de
 n=200
 p=1000
+de=0.1
 
 #Simulate a scRNA-seq data with four batches and four biological groups by splatter.
-sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), seed = seeds[i], group.prob = c(0.4,0.3,0.2,0.1),
+sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), seed = 1234, group.prob = c(0.4,0.3,0.2,0.1),
                             de.prob = c(de,de,de,de), method = "groups", verbose = F)
 sim.groups <- normalise(sim.groups)
 
@@ -38,7 +41,6 @@ correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/co
 correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
 
 ```
-We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
 
 # References
 Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641. (2018).
