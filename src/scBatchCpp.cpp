@@ -25,6 +25,7 @@ using namespace std;
 arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif, bool verbose){
   //NumericMatrix d, NumericMatrix core, NumericVector idx) {
   arma::wall_clock timer;
+  timer.tic();
 
   int p = c.n_rows; int n = c.n_cols;
   arma::mat core = c.t()*(eye(p,p)-ones(p,p)/p)*(eye(p,p)-ones(p,p)/p)*c;
@@ -34,7 +35,6 @@ arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, d
   for(int i = 0; i < max; ++i) {
     arma::vec group = randi<vec>(n,arma::distr_param(0,m-1));
     for(int k = 0; k < m; ++k){
-      timer.tic();
       arma::uvec idx = arma::find(group == k);
       Rcpp::List fdf = derif(c,w,d,core,idx);
       double f = fdf["f"];
@@ -55,7 +55,7 @@ arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, d
           double n = timer.toc();
 
           if (verbose){
-            Rcpp::Rcout << "Round:" << i << " Group:" << k << " time elapsed: " << n << " L: " << fnew << " step size: " << step << endl;
+            Rcpp::Rcout << "Round:" << i << " Group:" << k+1 << " L: " << fnew << " step size: " << " time elapsed: " << n << endl;
             //cout << fnew << endl;
           }
           break;
