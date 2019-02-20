@@ -11,7 +11,7 @@ library(scBatch)
 ```
 
 # Toy example
-The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It took around two minutes to correct a relative small data set with 200 samples and 1000 genes.  
+The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It took around twenty minutes to correct a relative small data set with 200 samples and 1000 genes.  
 
 ```{r}
 library(splatter)
@@ -34,11 +34,20 @@ cell.type = sim.groups@colData$Group
 #normalized count matrix
 exp <- exprs(sim.groups)
 
+#Plot the uncorrected sample pattern
+plot3d(princomp(cor(exp))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
+
 #Distance matrix correction by QuantNorm   
 correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/column',cor_method='pearson',max=5)
 
+#Plot the corrected sample pattern from distance matrix D
+plot3d(princomp(correctedD)$scores[,1:3],col=as.numeric(as.factor(cell.type)))
+
 #Corrected count based on the corrected distance matrix.
-correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=20,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
+correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=200,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
+
+#Plot the corrected sample pattern from corrected count matrix
+plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
 
 ```
 
