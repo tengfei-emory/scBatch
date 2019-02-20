@@ -55,7 +55,7 @@ arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, d
           double n = timer.toc();
 
           if (verbose){
-            Rcpp::Rcout << "Round:" << i << " Group:" << k+1 << " L: " << fnew << " step size: " << " time elapsed: " << n << endl;
+            Rcpp::Rcout << "Round:" << i << " Group:" << k+1 << " L: " << fnew << " time elapsed: " << n << endl;
             //cout << fnew << endl;
           }
           break;
