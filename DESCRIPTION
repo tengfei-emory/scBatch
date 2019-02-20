@@ -1,6 +1,6 @@
 Package: scBatch
-Title: Batch Effect Correction of Omics Data through Sample Distance Matrix Correction
-Description: Conducts count matrix correction based on the sample distance matrix correction of R package 'QuantNorm' (Fei et al, 2018, <doi:10.1093/bioinformatics/bty117>). Also available on 'GitHub' <https://github.com/tengfei-emory/scBatch>.
+Title: Batch Effect Correction Through Sample Distance Matrix Correction
+Description: Conducts count matrix correction based on the sample distance matrix correction of R package 'QuantNorm' <https://CRAN.R-project.org/package=QuantNorm>. Also available on 'GitHub' <https://github.com/tengfei-emory/scBatch>.
 Version: 0.1.0
 Depends: R (>= 3.3.0)
 Imports: stats, utils, Rcpp
@@ -8,6 +8,7 @@ Suggests: pheatmap
 Date: 2019-02-18
 Author: Teng Fei, Tianwei Yu
 Maintainer: Teng Fei <tfei@emory.edu>
+BugReports: https://github.com/tengfei-emory/scBatch/issues
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true

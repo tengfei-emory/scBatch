@@ -9,11 +9,11 @@ scBatchCpp(c, w, d, m, max, step, tol, derif, verbose)
 \arguments{
 \item{c}{The original p*n batch effect data with n subjects and p RNA-seq measurements.}
 
-\item{w}{An initial n*n weight matrix to conduct linear transformation. Default to be identity matrix if not specified.}
+\item{w}{An initial n*n weight matrix to conduct linear transformation. An usual choice is the identity matrix if not specified.}
 
 \item{d}{The n*n distance matrix obtained by QuantNorm.}
 
-\item{m}{Number of groups to be divided for coordinate gradient descent. 1 < m <= n. Default to be 0.1n if not specified.}
+\item{m}{Number of groups to be divided for coordinate gradient descent. 1 < m <= n.}
 
 \item{max}{Maximum number of the iteration if the tolerance is not reached.}
 
@@ -21,7 +21,7 @@ scBatchCpp(c, w, d, m, max, step, tol, derif, verbose)
 
 \item{tol}{Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.}
 
-\item{derif}{Function to compute gradient of the loss function.}
+\item{derif}{Function to compute gradient of the loss function. For Pearson distance, use scBatch::derif.}
 
 \item{verbose}{Whether output the loss function after each iteration.}
 }

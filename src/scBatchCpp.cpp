@@ -3,18 +3,19 @@
 #include <RcppArmadillo.h>
 // [[Rcpp::depends( RcppArmadillo)]]
 using namespace arma;
+using namespace std;
 
 //' Correct RNA-seq count matrix subject to batch effects by sample distance matrix correction (faster Rcpp version)
 //'
 //' @description  Use gradient descent algorithm to correct count matrix by linear transformation based on known sample matrix correction.
 //' @param c The original p*n batch effect data with n subjects and p RNA-seq measurements.
 //' @param d The n*n distance matrix obtained by QuantNorm.
-//' @param w An initial n*n weight matrix to conduct linear transformation. Default to be identity matrix if not specified.
-//' @param m Number of groups to be divided for coordinate gradient descent. 1 < m <= n. Default to be 0.1n if not specified.
+//' @param w An initial n*n weight matrix to conduct linear transformation. An usual choice is the identity matrix if not specified.
+//' @param m Number of groups to be divided for coordinate gradient descent. 1 < m <= n.
 //' @param max Maximum number of the iteration if the tolerance is not reached.
 //' @param step Step size of the gradient descent algorithm.
 //' @param tol Stopping criteria of the algorithm. The algorithm stops if the step size is smaller than tol.
-//' @param derif Function to compute gradient of the loss function.
+//' @param derif Function to compute gradient of the loss function. For Pearson distance, use scBatch::derif.
 //' @param verbose Whether output the loss function after each iteration.
 //' @return Returns the corrected count matrix.
 //' @author Teng Fei. Email: tfei@emory.edu
@@ -54,7 +55,7 @@ arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, d
           double n = timer.toc();
 
           if (verbose){
-            cout << k << " time elapsed: " << n << " L: " << fnew << " step size: " << step << endl;
+            Rcpp::Rcout << "Round:" << i << " Group:" << k << " time elapsed: " << n << " L: " << fnew << " step size: " << step << endl;
             //cout << fnew << endl;
           }
           break;
