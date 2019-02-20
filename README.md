@@ -38,7 +38,7 @@ exp <- exprs(sim.groups)
 correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/column',cor_method='pearson',max=5)
 
 #Corrected count based on the corrected distance matrix.
-correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1200,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
+correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=20,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
 
 ```
 
