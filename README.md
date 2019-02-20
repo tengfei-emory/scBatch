@@ -1,7 +1,7 @@
 # scBatch
 Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction
 
-scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts).
+scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts). We implemented the method with RcppArmadillo for higher efficiency.
 
 # Installation
 The package requires R version 3.3.0 with prerequisite package [Rcpp](https://CRAN.R-project.org/package=Rcpp), stats and utils. The package can be installed using the following code. The installation will typically complete within a minute.
@@ -11,7 +11,7 @@ library(scBatch)
 ```
 
 # Toy example
-The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). We recommend scBatchCpp function, which is an RcppArmadillo implementation of the scBatch function in the package.
+The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It took around two minutes to correct a relative small data set with 200 samples and 1000 genes.  
 
 ```{r}
 library(splatter)
