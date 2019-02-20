@@ -10,20 +10,23 @@ devtools::install_github('tengfei-emory/scBatch')
 library(scBatch)
 ```
 
-# Toy example
-The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It took around twenty minutes to correct a relative small data set with 200 samples and 1000 genes.  
+# Example with simulated data
+The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html).
 
 ```{r}
 library(splatter)
 library(scBatch)
 
 #sample size n, number of genes p and the probability of being differentially expressed de
-n=200
-p=1000
+n=1000
+p=10000
 de=0.1
 
-#Simulate a scRNA-seq data with four batches and four biological groups by splatter.
-sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), seed = 1234, group.prob = c(0.4,0.3,0.2,0.1),
+#Simulate a scRNA-seq data with four batches and four biological groups by splatter. The location and scale parameter of batch effects
+#are fixed for quicker convergence of algorithm. More complicated batch effect mechanism will take longer to reach satisfied results.
+
+sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), batch.facLoc=c(0.1,0.1,0.1,0.1),
+                            batch.facScale=c(0.1,0.1,0.1,0.1),seed = 1234, group.prob = c(0.4,0.3,0.2,0.1),
                             de.prob = c(de,de,de,de), method = "groups", verbose = F)
 sim.groups <- normalise(sim.groups)
 
@@ -44,7 +47,7 @@ correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/co
 plot3d(princomp(correctedD)$scores[,1:3],col=as.numeric(as.factor(cell.type)))
 
 #Corrected count based on the corrected distance matrix.
-correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=200,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
+correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1000,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
 
 #Plot the corrected sample pattern from corrected count matrix
 plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
