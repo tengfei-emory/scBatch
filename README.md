@@ -1,11 +1,12 @@
 # scBatch
 Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction
 
-scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts). We implemented the method with RcppArmadillo for higher efficiency.
+scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. We implemented the method with RcppArmadillo for higher efficiency.
 
 # Installation
-The package requires R version 3.3.0 with prerequisite package [Rcpp](https://CRAN.R-project.org/package=Rcpp), stats and utils. The package can be installed using the following code. The installation will typically complete within a minute.
+The package requires R version 3.3.0 with prerequisite packages [Rcpp](https://CRAN.R-project.org/package=Rcpp), stats and utils. The package can be installed using the following code. The installation will typically complete within a minute.
 ```{r}
+#install.packages(devtools)
 devtools::install_github('tengfei-emory/scBatch')
 library(scBatch)
 ```
@@ -53,6 +54,9 @@ correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1000,tol=1e-10
 plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
 
 ```
+
+# Reproducibility
+For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts).
 
 # References
 Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641. (2018).
