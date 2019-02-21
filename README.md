@@ -3,7 +3,7 @@ Correct scRNA-seq count matrix subject to batch effects by sample distance matri
 
 scBatch utilizes previous correction on sample distance matrices, such as [QuantNorm](github.com/tengfei-emory/QuantNorm), to further correct the count matrix. We implemented the method with RcppArmadillo for higher efficiency.
 
-Although the method is not published yet, a relevant poster presentation is available at [here](http://www.stat.uga.edu/sites/default/files/05_Fei_Teng.pdf)
+Although the method is not published yet, a relevant poster presentation is available [here](http://www.stat.uga.edu/sites/default/files/05_Fei_Teng.pdf).
 
 # Installation
 The package requires R version 3.3.0 with prerequisite packages [Rcpp](https://CRAN.R-project.org/package=Rcpp), stats and utils. The package can be installed using the following code. The installation will typically complete within a minute.
