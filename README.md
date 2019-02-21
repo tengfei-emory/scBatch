@@ -12,7 +12,7 @@ library(scBatch)
 ```
 
 # Example with simulated data
-The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It will take around ten minutes to simulate and correct a data with 100 subjects and 10000 genes. It can be observed from PCA plots that the batch effects are mitigated as the biological patterns are restored after correction. For data set with large sample size, please consider utilize high performance computing (HPC) platforms. The typically running time for data sets with sample size less than 1,000 is between 2 to 3 hours on HPC devices.
+The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It will take around ten minutes to simulate and correct a data with 100 subjects and 10000 genes. It can be observed from PCA plots that the batch effects are mitigated as the biological patterns are restored after correction. 
 
 ```{r}
 library(splatter)
@@ -54,6 +54,7 @@ correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1000,tol=1e-10
 plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
 
 ```
+For data set with large sample size, please consider utilize high performance computing (HPC) platforms. The typical running time for data sets with sample size less than 1,000 is between 2 to 3 hours on HPC devices.
 
 # Reproducibility
 For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts).
