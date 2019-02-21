@@ -67,7 +67,7 @@ correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1000,tol=1e-10
 plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
 ```
 
-For data set with large sample size, please consider utilize high performance computing (HPC) platforms. The typical running time for data sets with sample size less than 1,000 is between 2 to 3 hours on HPC devices.
+For data set with large sample size, please consider utilizing high performance computing (HPC) platforms. The typical running time for data sets with sample size less than 1,000 is between 2 to 3 hours on HPC devices.
 
 # Reproducibility
 For the results generated for the manuscript, the relevant scripts are available at [this repository](github.com/tengfei-emory/scBatch-paper-scripts).
