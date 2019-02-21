@@ -28,7 +28,7 @@ p=10000
 de=0.1
 ```
 
-Simulate a scRNA-seq data with four batches and four biological groups by splatter. The location and scale parameter of batch effects are fixed for quicker convergence of algorithm. More complicated batch effect mechanism will take longer to reach satisfied results.
+Simulate a scRNA-seq data with four batches and four biological groups by splatter. The location and scale parameter of batch effects are fixed as 0.1 for quicker convergence of algorithm. More complicated batch effect mechanism will take longer to reach satisfied results.
 
 ```{r}
 sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), batch.facLoc=c(0.1,0.1,0.1,0.1),
