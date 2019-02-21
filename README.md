@@ -15,17 +15,22 @@ library(scBatch)
 The following script utilizes scBatch to conduct batch effect correction on a simulated scRNA-seq data by [splatter](https://bioconductor.org/packages/release/bioc/html/splatter.html). It will take around ten minutes to simulate and correct a data with 100 subjects and 10000 genes. It can be observed from PCA plots that the batch effects are mitigated as the biological patterns are restored after correction. 
 
 ```{r}
+#Loading packages
 library(splatter)
 library(scBatch)
+library(rgl)
+```
 
-#sample size n, number of genes p and the probability of being differentially expressed de
+Set sample size n = 100, number of genes p = 10000 and the probability of being differentially expressed de = 0.1.
+```{r}
 n=100
 p=10000
 de=0.1
+```
 
-#Simulate a scRNA-seq data with four batches and four biological groups by splatter. The location and scale parameter of batch effects
-#are fixed for quicker convergence of algorithm. More complicated batch effect mechanism will take longer to reach satisfied results.
+Simulate a scRNA-seq data with four batches and four biological groups by splatter. The location and scale parameter of batch effects are fixed for quicker convergence of algorithm. More complicated batch effect mechanism will take longer to reach satisfied results.
 
+```{r}
 sim.groups <- splatSimulate(nGenes=p, batchCells = c(n/4,n/4,n/4,n/4), batch.facLoc=c(0.1,0.1,0.1,0.1),
                             batch.facScale=c(0.1,0.1,0.1,0.1),seed = 1234, group.prob = c(0.4,0.3,0.2,0.1),
                             de.prob = c(de,de,de,de), method = "groups", verbose = F)
@@ -40,20 +45,26 @@ exp <- exprs(sim.groups)
 
 #Plot the uncorrected sample pattern
 plot3d(princomp(cor(exp))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
+```
 
-#Distance matrix correction by QuantNorm   
+Now we conduct batch effect correction. The first step is distance matrix correction by QuantNorm:
+
+```{r}
 correctedD <- QuantNorm(exp,as.numeric(as.factor(batch)),logdat=F,method='row/column',cor_method='pearson',max=5)
 
 #Plot the corrected sample pattern from distance matrix D
 plot3d(princomp(correctedD)$scores[,1:3],col=as.numeric(as.factor(cell.type)))
+```
 
-#Corrected count based on the corrected distance matrix.
+The second step is to use scBatch algorithm to further correct count matrix. 
+
+```{r}
 correctedmatrix <-scBatchCpp(c=exp,d=correctedD,w=diag(n),m=5,max=1000,tol=1e-10,step=0.0001,derif=scBatch::derif,verbose=T)
 
 #Plot the corrected sample pattern from corrected count matrix
 plot3d(princomp(cor(correctedmatrix))$scores[,1:3],col=as.numeric(as.factor(cell.type)))
-
 ```
+
 For data set with large sample size, please consider utilize high performance computing (HPC) platforms. The typical running time for data sets with sample size less than 1,000 is between 2 to 3 hours on HPC devices.
 
 # Reproducibility
