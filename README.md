@@ -17,6 +17,7 @@ The following script utilizes scBatch to conduct batch effect correction on a si
 ```{r}
 #Loading packages
 library(splatter)
+library(scater)
 library(scBatch)
 library(rgl)
 ```
