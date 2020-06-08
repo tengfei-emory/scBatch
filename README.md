@@ -73,8 +73,10 @@ For data set with large sample size, please consider utilizing high performance 
 For the results generated for the manuscript, the relevant scripts are available at [this repository](https://github.com/tengfei-emory/scBatch-paper-scripts).
 
 # References
-Fei, Teng, et al. "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641. (2018).
+Fei, Teng, and Tianwei Yu (2020). "scBatch: batch-effect correction of RNA-seq data through sample distance matrix adjustment." Bioinformatics 36(10): 3115-3123.
 
-Zappia, Luke, Belinda Phipson, and Alicia Oshlack. "Splatter: simulation of single-cell RNA sequencing data." Genome biology 18.1 (2017): 174.
+Fei, Teng, et al (2018). "Mitigating the adverse impact of batch effects in sample pattern detection", Bioinformatics 34(15):2634–2641.
 
-Eddelbuettel, Dirk, and Conrad Sanderson. "RcppArmadillo: Accelerating R with high-performance C++ linear algebra." Computational Statistics & Data Analysis 71 (2014): 1054-1063.
+Zappia, Luke, Belinda Phipson, and Alicia Oshlack (2017). "Splatter: simulation of single-cell RNA sequencing data." Genome biology 18.1: 174.
+
+Eddelbuettel, Dirk, and Conrad Sanderson (2014). "RcppArmadillo: Accelerating R with high-performance C++ linear algebra." Computational Statistics & Data Analysis 71: 1054-1063.
