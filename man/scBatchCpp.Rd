@@ -32,7 +32,7 @@ Returns the corrected count matrix.
 Use gradient descent algorithm to correct count matrix by linear transformation based on known sample matrix correction.
 }
 \references{
-Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
+Fei & Yu (2020). scBatch: batch-effect correction of RNA-seq data through sample distance matrix adjustment. Bioinformatics, 36(10), 3115-3123. <https://doi.org/10.1093/bioinformatics/btaa097>.
 }
 \author{
 Teng Fei. Email: tfei@emory.edu
