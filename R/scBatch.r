@@ -13,7 +13,7 @@
 #' @author Teng Fei. Email: tfei@emory.edu
 #' @useDynLib scBatch, .registration = TRUE
 #' @importFrom Rcpp sourceCpp
-#' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
+#' @references Fei & Yu (2020). scBatch: batch-effect correction of RNA-seq data through sample distance matrix adjustment. Bioinformatics, 36(10), 3115-3123. <https://doi.org/10.1093/bioinformatics/btaa097>.
 #' @export
 
 
