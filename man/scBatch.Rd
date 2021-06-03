@@ -4,8 +4,15 @@
 \alias{scBatch}
 \title{Correct scRNA-seq count matrix subject to batch effects by sample distance matrix correction}
 \usage{
-scBatch(count.mat, dist.mat, weight.mat, m, max.iter = 30,
-  step.size = 1e-04, tol = 1e-10)
+scBatch(
+  count.mat,
+  dist.mat,
+  weight.mat,
+  m,
+  max.iter = 30,
+  step.size = 1e-04,
+  tol = 1e-10
+)
 }
 \arguments{
 \item{count.mat}{The original p*n batch effect data with n subjects and p RNA-seq measurements.}
@@ -29,7 +36,7 @@ Returns the corrected count matrix.
 As an extension of package 'QuantNorm', which corrects the distance matrix to obtain reasonable sample pattern, this package use gradient descent algorithm to correct count matrix by linear transformation.
 }
 \references{
-Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
+Fei and Yu (2020). scBatch: batch-effect correction of RNA-seq data through sample distance matrix adjustment. Bioinformatics, 36(10), 3115-3123. <https://doi.org/10.1093/bioinformatics/btaa097>
 }
 \author{
 Teng Fei. Email: tfei@emory.edu

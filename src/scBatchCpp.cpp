@@ -19,7 +19,7 @@ using namespace std;
 //' @param verbose Whether output the loss function after each iteration.
 //' @return Returns the corrected count matrix.
 //' @author Teng Fei. Email: tfei@emory.edu
-//' @references Fei et al (2018), Mitigating the adverse impact of batch effects in sample pattern detection, Bioinformatics, <https://doi.org/10.1093/bioinformatics/bty117>.
+//' @references Fei and Yu (2020). scBatch: batch-effect correction of RNA-seq data through sample distance matrix adjustment. Bioinformatics, 36(10), 3115-3123. <https://doi.org/10.1093/bioinformatics/btaa097>
 //' @export
 // [[Rcpp::export]]
 arma::mat scBatchCpp(arma::mat c, arma::mat w, arma::mat d, int m, double max, double step, double tol, Rcpp::Function derif, bool verbose){

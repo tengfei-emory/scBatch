@@ -4,8 +4,16 @@
 \alias{QuantNorm}
 \title{Adjust the distance matrix by quantile normalization for data with batch effect}
 \usage{
-QuantNorm(dat, batch, method = "row/column", cor_method = "spearman",
-  tol = 0.01, max = 50, logdat = TRUE, standardize = FALSE)
+QuantNorm(
+  dat,
+  batch,
+  method = "row/column",
+  cor_method = "spearman",
+  tol = 0.01,
+  max = 50,
+  logdat = TRUE,
+  standardize = FALSE
+)
 }
 \arguments{
 \item{dat}{The original p*n batch effect data with n subjects and p RNA-seq measurements.}
